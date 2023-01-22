@@ -8,7 +8,7 @@ my_servers = api.servers.list_servers()
 
 rl_id = str(my_servers[5]['attributes']['identifier'])
 # print (rl_id)
-file = api.client.servers.files.list_files(rl_id,'World/FEData/json/PlayerInfo')
+file = api.client.servers.files.list_files('8b6f8a6f','World/FEData/json/PlayerInfo')
 
 df = pd.DataFrame.from_dict(file['data'])
 # df.to_csv('data.csv')
@@ -17,7 +17,7 @@ df = pd.DataFrame.from_dict(file['data'])
 data = []
 
 for each in df['attributes']:
-     data.append(api.client.servers.files.get_file_contents(rl_id,'World/FEData/json/PlayerInfo/{0}'.format(each['name'])))
+     data.append(api.client.servers.files.get_file_contents('8b6f8a6f','World/FEData/json/PlayerInfo/{0}'.format(each['name'])))
 
 df2 = pd.DataFrame(data)
 df2.to_csv('data_contents.csv')  

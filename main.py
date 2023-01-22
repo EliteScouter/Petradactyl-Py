@@ -1,17 +1,42 @@
-from pydactyl import PterodactylClient 
-import pandas as pd
-api = PterodactylClient('https://manage.strictgaming.com', 'ptlc_JXozJ0hkVeCFm0HGLAHO4Z7eTPndfhXe3AjT2OMQJL1')
+from api_stuff import APIStuff as api
+
+
+def main():
+
+
+    id = api.get_server_id(api,api.list_servers(api),"SG RLCraft")
+    fileList = api.list_files(api,id)
+    
+    print(fileList)
+    playerList = api.get_player_info(api,id,fileList)
+    print(playerList)
 
 
 
-def get_servers(name):
-    servers = api.servers.list_servers()
-    print(servers)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+if __name__ == "__main__":
+    main()
     
         
     
 
-
-# def get_player_time():
-
-get_servers('SG RLCraft')
